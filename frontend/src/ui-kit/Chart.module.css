@@ -1,0 +1,58 @@
+.chart {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 1.2rem;
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.bars {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-end;
+  height: 140px;
+}
+
+.barWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.bar {
+  width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f1c27d 0%, #d4a373 100%);
+}
+
+.level1 {
+  height: 20%;
+}
+
+.level2 {
+  height: 40%;
+}
+
+.level3 {
+  height: 55%;
+}
+
+.level4 {
+  height: 75%;
+}
+
+.level5 {
+  height: 95%;
+}
+
+.label {
+  font-size: 0.75rem;
+  color: #6b7280;
+}

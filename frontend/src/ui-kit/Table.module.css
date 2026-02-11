@@ -1,0 +1,29 @@
+.wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.75rem 0.9rem;
+}
+
+th {
+  background: #f5f3ef;
+  color: #3f2d2d;
+  font-weight: 600;
+}
+
+td {
+  border-top: 1px solid #efe7dd;
+  color: #2f2f2f;
+}
