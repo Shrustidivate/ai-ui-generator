@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
 :root {
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
-  color: #1a1a1a;
-  background: #f6f4f0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  color: #1f2937;
+  background: #f6f1e8;
 }
 
 * {
@@ -10,4 +12,235 @@
 
 body {
   margin: 0;
+  background: radial-gradient(circle at top left, #fff3e0 0%, #f6f1e8 45%, #efe7dd 100%);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem 0.8rem;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #7c6f64;
+  margin-bottom: 0.4rem;
+}
+
+.status {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.status-idle {
+  background: #edf2f7;
+  color: #4b5563;
+}
+
+.status-loading {
+  background: #fff7ed;
+  color: #b45309;
+}
+
+.panes {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr 1.3fr;
+  gap: 1rem;
+  padding: 1rem 2rem 2rem;
+}
+
+.pane {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid #eadfd1;
+  border-radius: 22px;
+  box-shadow: 0 20px 45px rgba(46, 29, 20, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pane-section {
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-bottom: 1px solid #f0e5d8;
+}
+
+.pane-section:last-child {
+  border-bottom: none;
+}
+
+.pane-section h2 {
+  font-size: 1.05rem;
+  color: #3f2d2d;
+}
+
+.pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.grow {
+  flex: 1;
+}
+
+.intent-input,
+.code-editor {
+  width: 100%;
+  border: 1px solid #e2d6c8;
+  border-radius: 14px;
+  padding: 0.85rem;
+  font-size: 0.95rem;
+  background: #fffdf9;
+  min-height: 120px;
+  resize: vertical;
+}
+
+.code-editor {
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  min-height: 360px;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.action {
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+  background: #0f4c5c;
+  color: #fef7e7;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(15, 76, 92, 0.2);
+}
+
+.action:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.explanation {
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: #fff7ed;
+  border: 1px solid #f2e3cf;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #efe2d3;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  border-color: #d9c3aa;
+}
+
+.preview {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px dashed #eadfd1;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.error {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.muted {
+  color: #7c6f64;
+  font-size: 0.85rem;
+}
+
+.pill {
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pill-ok {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pill-warn {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.validation-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #9a3412;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1100px) {
+  .panes {
+    grid-template-columns: 1fr;
+  }
+
+  .button-row {
+    grid-template-columns: 1fr;
+  }
 }
