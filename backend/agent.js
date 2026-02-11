@@ -65,13 +65,18 @@ export async function runAgent({ mode = "generate", userIntent, currentCode, las
     return { error: "Missing OPENAI_API_KEY in backend environment." };
   }
 
+  const safeMode = ["generate", "modify", "regenerate"].includes(mode) ? mode : "generate";
   const model = process.env.OPENAI_MODEL || "gpt-5";
   const policyWarnings = detectPolicyViolations(userIntent);
   const policyNotes = policyWarnings.length ? policyWarnings.join(" ") : "None.";
 
+  if (safeMode === "modify" && !lastPlan) {
+    return { error: "Modify requested without an existing plan." };
+  }
+
   const plannerTemplate = await loadPrompt("planner.txt");
   const plannerPrompt = fillPrompt(plannerTemplate, {
-    MODE: mode,
+    MODE: safeMode,
     USER_INTENT: truncate(userIntent, 4000),
     CURRENT_CODE: truncate(currentCode, 4000),
     LAST_PLAN: lastPlan ? JSON.stringify(lastPlan, null, 2) : "(none)",
@@ -89,7 +94,7 @@ export async function runAgent({ mode = "generate", userIntent, currentCode, las
   let plan = planResult;
   let changePlan = null;
 
-  if (mode === "modify") {
+  if (safeMode === "modify") {
     changePlan = planResult;
     const applied = applyChangePlan(lastPlan, changePlan);
     plan = applied.plan;
@@ -105,7 +110,7 @@ export async function runAgent({ mode = "generate", userIntent, currentCode, las
 
   const generatorTemplate = await loadPrompt("generator.txt");
   const generatorPrompt = fillPrompt(generatorTemplate, {
-    MODE: mode,
+    MODE: safeMode,
     PLAN: JSON.stringify(plan, null, 2),
     CHANGE_PLAN: changePlan ? JSON.stringify(changePlan, null, 2) : "(none)",
     CURRENT_CODE: truncate(currentCode, 6000)
@@ -125,7 +130,7 @@ export async function runAgent({ mode = "generate", userIntent, currentCode, las
 
   const explainerTemplate = await loadPrompt("explainer.txt");
   const explainerPrompt = fillPrompt(explainerTemplate, {
-    MODE: mode,
+    MODE: safeMode,
     USER_INTENT: truncate(userIntent, 4000),
     POLICY_NOTES: policyNotes,
     PLAN: JSON.stringify(plan, null, 2),
