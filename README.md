@@ -1,4 +1,4 @@
-# AI Agent ? Deterministic UI Generator
+ï»¿# AI Agent ? Deterministic UI Generator
 
 A full-stack app that turns user intent into a deterministic UI plan + constrained React code, then renders a live preview using a fixed component library.
 
@@ -10,9 +10,9 @@ A full-stack app that turns user intent into a deterministic UI plan + constrain
 
 ## Agent Pipeline
 The backend runs three steps in `/api/agent`:
-1. **Planner** — converts intent (plus current code/plan) into a JSON plan or change plan.
-2. **Generator** — converts the plan into a single-file React component string.
-3. **Explainer** — explains decisions and changes.
+1. **Planner** â€” converts intent (plus current code/plan) into a JSON plan or change plan.
+2. **Generator** â€” converts the plan into a single-file React component string.
+3. **Explainer** â€” explains decisions and changes.
 
 Prompt templates are stored in `backend/prompts/`:
 - `backend/prompts/planner.txt`
@@ -41,6 +41,7 @@ npm run install:all
 - Copy `backend/.env.example` to `backend/.env`
 - Set `OPENAI_API_KEY`
 - Optionally set `OPENAI_MODEL`
+- To run without an API key for demos, set `MOCK_AGENT=1`
 
 3. Run both frontend + backend:
 
