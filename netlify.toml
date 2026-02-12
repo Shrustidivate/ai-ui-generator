@@ -5,6 +5,6 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://YOUR-BACKEND-URL/api/:splat"
+  to = "https://ai-ui-generator-1.onrender.com/api/:splat"
   status = 200
   force = true
